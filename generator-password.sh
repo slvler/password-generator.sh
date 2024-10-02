@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# ___| |_   _| | ___ _ __ 
+#/ __| \ \ / / |/ _ \ '__|
+#\__ \ |\ V /| |  __/ |   
+#|___/_| \_/ |_|\___|_| 
+#A script written by slvler in September 2023 under GNU GENERAL PUBLIC LICENSE
+#
 
 REDBg=$'\e[0;41m'
 GREENBg=$'\e[0;42m'
