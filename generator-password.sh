@@ -6,11 +6,9 @@
 #|___/_| \_/ |_|\___|_| 
 #A script written by slvler in September 2023 under GNU GENERAL PUBLIC LICENSE
 #
+set -u
 
-REDBg=$'\e[0;41m'
-GREENBg=$'\e[0;42m'
-YELLOWBg=$'\e[0;43m'
-NC=$'\e[0m'
+COLORED_MESSAGES=""
 
 base64="base64"
 md5="md5"
@@ -20,12 +18,101 @@ sha256="sha256"
 sha384="sha384"
 sha512="sha512"
 
+# Help
+function help()
+{
+    echo ""
+    echo -e "a script for storing passwords in a secure format"
+    echo -e "to make it work ${GREEN}sudo bash generator-password.sh$NC"
+    echo "----------------------------------------------------------"
+    echo -e $CYAN"    Create by           $WHITE":" $RED slvler$NC"
+    echo -e $CYAN"    Developer           $WHITE":" $RED https://github.com/slvler$NC"
+    echo -e $CYAN"    Version             $WHITE":" $RED v1.0.0$NC"
+    echo ""
+}
+
+# Exit
+function qt(){
+    clear
+    echo ""
+    echo "----------------------------------------------------------"
+    echo -e $REDBg"EXİT$NC"
+    echo ""
+    exit 0
+}
+
+function load_colors()
+{
+ if [[ $COLORED_MESSAGES == "yes" ]];
+ then
+
+  NC="\e[0m"
+
+  # Background
+  REDBg="\e[0;41m"
+  GREENBg="\e[0;42m"
+  YELLOWBg="\e[0;43m"
+  BLUEBg="\e[0;44m"
+  PINKBg="\e[0;45m"
+  CYANBg="\e[0;46m"
+  WHITEBg="\e[0;47m"
+
+  # Color
+  RED="\e[31m"
+  GREEN="\e[32m"
+  YELLOW="\e[33m"
+  BLUE="\e[0;34m"
+  MAGENTA="\e[35m"
+  CYAN="\e[36m"
+  WHITE="\e[37m"
+  GRAY="\e[38;5;242m"
+
+  # Underline
+  URED="\e[4;31m"
+  UGREEN="\e[4;32m"
+  UYELLOW="\e[4;33m"
+  UBLUE="\e[4;34m"
+  UPINK="\e[4;35m"
+  UCYAN="\e[4;36m"
+  UWHITE="\e[4;37m"
+
+ else
+  NC=""
+  # Background
+  REDBg=""
+  GREENBg=""
+  YELLOWBg=""
+  BLUEBg=""
+  PINKBg=""
+  CYANBg=""
+  WHITEBg=""
+
+  # Color
+  RED=""
+  GREEN=""
+  YELLOW=""
+  BLUE=""
+  MAGENTA=""
+  CYAN=""
+  WHITE=""
+  GRAY=""
+
+  # Underline
+  URED=""
+  UGREEN=""
+  UYELLOW=""
+  UBLUE=""
+  UPINK=""
+  UCYAN=""
+  UWHITE=""
+ fi;
+}
+load_colors
 
 echo "${REDBg} simple password generator ${NC}"
-sleep 1
 echo "enter the password: "
 read password
-sleep 1
+
 
 echo "${REDBg} choose encryption type ${NC}"
 echo $base64
